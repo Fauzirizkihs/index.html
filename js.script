@@ -1,0 +1,37 @@
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('ticket-form').style.display = 'block';
+});
+
+document.getElementById('jumlah').addEventListener('input', function() {
+    const jumlah = this.value;
+    const tribun = document.getElementById('tribun').value;
+    let hargaPerTiket;
+
+    switch (tribun) {
+        case 'BARAT VIP':
+            hargaPerTiket = 300000;
+            break;
+        case 'Timur':
+            hargaPerTiket = 200000;
+            break;
+        case 'Utara':
+            hargaPerTiket = 100000;
+            break;
+        case 'Selatan':
+            hargaPerTiket = 150000;
+            break;
+    }
+
+    document.getElementById('harga').value = 'Rp ' + (hargaPerTiket * jumlah);
+});
+
+document.getElementById('tribun').addEventListener('change', function() {
+    document.getElementById('jumlah').dispatchEvent(new Event('input'));
+});
+
+document.getElementById('ticketForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Pembelian tiket berhasil!');
+});
